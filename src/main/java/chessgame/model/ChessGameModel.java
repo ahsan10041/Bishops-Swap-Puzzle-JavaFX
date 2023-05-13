@@ -1,4 +1,4 @@
-package ChessGame.model;
+package chessgame.model;
 
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -17,16 +17,16 @@ public class ChessGameModel {
                         switch (i) {
                             case 0 ->
                                     switch (j) {
-                                        case 1 -> Square.BLACK;
-                                        case 3 -> Square.BLACK;
-                                        default -> Square.NONE;
+                                                case 1 -> Square.BLACK;
+                                                case 3 -> Square.BLACK;
+                                                default -> Square.NONE;
                                     };
                             case BOARD_ROW - 1 ->
-                                    switch (j) {
-                                        case 1 -> Square.WHITE;
-                                        case 3 -> Square.WHITE;
-                                        default -> Square.NONE;
-                                    };
+                                                switch (j) {
+                                                      case 1 -> Square.WHITE;
+                                                      case 3 -> Square.WHITE;
+                                                      default -> Square.NONE;
+                                                 };
                             default -> Square.NONE;
                         }
                 );
@@ -74,18 +74,18 @@ public class ChessGameModel {
 
     public boolean isSafe(Position from , Position to){
 
-        for(var i = 0; i<BOARD_ROW;i++){
-            for(var j= 0; j<BOARD_COL;j++){
-                Position temp = new Position(i,j);
-                if((getSquare(from) == Square.WHITE) && (isDiagnol(to.row(), to.col(),i,j)) && (getSquare(temp)== Square.BLACK)){
-                    return false;
-                }
-                else if ((getSquare(from) == Square.BLACK) && (isDiagnol(to.row(), to.col(),i,j)) && (getSquare(temp)== Square.WHITE)) {
-                    return false;
-                }
-            }
-        }
-        return true;
+                 for(var i = 0; i<BOARD_ROW;i++){
+                     for(var j= 0; j<BOARD_COL;j++){
+                         Position temp = new Position(i,j);
+                         if((getSquare(from) == Square.WHITE) && (isDiagnol(to.row(), to.col(),i,j)) && (getSquare(temp)== Square.BLACK)){
+                             return false;
+                         }
+                         else if ((getSquare(from) == Square.BLACK) && (isDiagnol(to.row(), to.col(),i,j)) && (getSquare(temp)== Square.WHITE)) {
+                             return false;
+                         }
+                     }
+                 }
+                 return true;
 
     }
 

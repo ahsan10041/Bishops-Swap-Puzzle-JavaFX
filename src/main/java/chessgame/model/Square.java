@@ -1,4 +1,4 @@
-package ChessGame.model;
+package chessgame.model;
 
 public enum Square {
     NONE,

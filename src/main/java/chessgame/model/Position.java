@@ -1,5 +1,4 @@
-package ChessGame.model;
-
+package chessgame.model;
 
 public record Position(int row, int col) {
 
