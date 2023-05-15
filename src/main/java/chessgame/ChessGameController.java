@@ -50,10 +50,13 @@ public class ChessGameController {
     }
 
     private StackPane createSquare(int i, int j) {
-        /*
-        * */
         var square = new StackPane();
         square.getStyleClass().add("square");
+//        if((i+j) % 2 == 0 ){
+//            square.getStyleClass().add("square1");
+//            square.getStyleClass().add("square2");
+//        }
+
         var piece = new Circle(25);
         piece.fillProperty().bind(createSquareBinding(model.squareProperty(i, j)));
         square.getChildren().add(piece);
@@ -68,6 +71,7 @@ public class ChessGameController {
         var col = GridPane.getColumnIndex(square);
         Logger.info("Click on square ({},{})", row, col);
         selector.select(new Position(row, col));
+//        selector.checkResetPhase(new Position(row,col));
         if (selector.isReadyToMove()) {
             selector.makeMove();
         }

@@ -55,7 +55,7 @@
          <children>
             <Label layoutX="31.0" layoutY="36.0" prefHeight="30.0" prefWidth="234.0" style="-fx-alignment: center;" text="WELCOME" textAlignment="CENTER" textFill="#0000008c">
                <font>
-                  <Font name="MV Boli" size="24.0" />
+                  <Font name="Verdana" size="24.0" />
                </font>
                <effect>
                   <InnerShadow />

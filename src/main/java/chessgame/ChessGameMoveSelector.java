@@ -54,6 +54,13 @@ public class ChessGameMoveSelector {
         }
     }
 
+//    public void checkResetPhase(Position position) {
+//        if (phase.get() == Phase.SELECT_TO && position.equals(from)) {
+//            phase.set(Phase.SELECT_FROM);
+//        }
+//    }
+
+
     private void selectTo(Position position) {
         if (model.canMove(from, position)) {
             to = position;
