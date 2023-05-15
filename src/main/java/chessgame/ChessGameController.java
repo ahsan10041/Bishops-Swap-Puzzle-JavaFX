@@ -96,10 +96,33 @@ public class ChessGameController {
     private void showSelectionPhaseChange(ObservableValue<? extends Phase> value, Phase oldPhase, Phase newPhase) {
         switch (newPhase) {
             case SELECT_FROM -> {}
-            case SELECT_TO -> showSelection(selector.getFrom());
-            case READY_TO_MOVE -> hideSelection(selector.getFrom());
+            case SELECT_TO -> {showSelection(selector.getFrom());
+                              possibleMoves(selector.getFrom());}
+            case READY_TO_MOVE -> {hideSelection(selector.getFrom());
+                                    hidePossibleMoves();}
         }
     }
+
+    private void possibleMoves(Position position){
+        for (var i = 0; i < board.getRowCount(); i++) {
+            for (var j = 0; j < board.getColumnCount(); j++) {
+                if(model.canMove(position,(new Position(i,j)))){
+                    var square = getSquare(new Position(i,j));
+                    square.getStyleClass().add("allowed");
+                }
+            }
+        }
+    }
+
+    private void hidePossibleMoves() {
+        for (var i = 0; i < board.getRowCount(); i++) {
+            for (var j = 0; j < board.getColumnCount(); j++) {
+                var square = getSquare(new Position(i, j));
+                square.getStyleClass().remove("allowed");
+            }
+        }
+    }
+
 
     private void showSelection(Position position) {
         var square = getSquare(position);
@@ -125,5 +148,11 @@ public class ChessGameController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void undoPhase(ActionEvent event) throws IOException {
+        hideSelection(selector.getFrom());
+        hidePossibleMoves();
+        selector.reset();
     }
 }

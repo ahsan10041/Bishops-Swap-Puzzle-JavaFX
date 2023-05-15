@@ -18,7 +18,10 @@ public class startPageController {
         Parent root = FXMLLoader.load(getClass().getResource("/ui2.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
+        stage.setTitle("Bishop's Dominion");
         stage.setScene(scene);
         stage.show();
     }
+
+
 }

@@ -4,6 +4,9 @@ import chessgame.model.ChessGameModel;
 import chessgame.model.Position;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.event.ActionEvent;
+
+import java.io.IOException;
 
 public class ChessGameMoveSelector {
 
