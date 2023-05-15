@@ -6,18 +6,30 @@ import chessgame.model.Square;
 import javafx.beans.binding.ObjectBinding;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 import org.tinylog.Logger;
+
+import java.io.IOException;
 
 import static chessgame.ChessGameMoveSelector.Phase;
 
 public class ChessGameController {
+
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
     @FXML
     private GridPane board;
@@ -103,5 +115,11 @@ public class ChessGameController {
         }
         throw new AssertionError();
     }
-
+    public void SwitchToStart(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/startpage.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }
