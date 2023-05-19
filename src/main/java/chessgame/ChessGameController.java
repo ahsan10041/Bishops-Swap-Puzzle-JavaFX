@@ -12,6 +12,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -30,6 +32,11 @@ public class ChessGameController {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private startPageController startpage = new startPageController();
+
+
+    @FXML
+    private Label myPlayerName;
 
     @FXML
     private GridPane board;
@@ -40,6 +47,7 @@ public class ChessGameController {
 
     @FXML
     private void initialize() {
+        myPlayerName.setText((startpage.getCurrentPlayer()).getPlayerName());
         for (var i = 0; i < board.getRowCount(); i++) {
             for (var j = 0; j < board.getColumnCount(); j++) {
                 var square = createSquare(i, j);
@@ -52,11 +60,6 @@ public class ChessGameController {
     private StackPane createSquare(int i, int j) {
         var square = new StackPane();
         square.getStyleClass().add("square");
-//        if((i+j) % 2 == 0 ){
-//            square.getStyleClass().add("square1");
-//            square.getStyleClass().add("square2");
-//        }
-
         var piece = new Circle(25);
         piece.fillProperty().bind(createSquareBinding(model.squareProperty(i, j)));
         square.getChildren().add(piece);
