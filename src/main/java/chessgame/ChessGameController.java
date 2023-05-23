@@ -14,14 +14,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.Circle;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import org.tinylog.Logger;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 import java.io.IOException;
 
@@ -29,11 +29,19 @@ import static chessgame.ChessGameMoveSelector.Phase;
 
 public class ChessGameController {
 
+    Alert alert = new Alert(AlertType.INFORMATION);
+
     private Stage stage;
     private Scene scene;
     private Parent root;
-//    private startPageController startpage = new startPageController();
-//    private Game thisGame = new Game(startpage.getCurrentPlayer());
+    private ImageView imageView = new ImageView();
+
+    @FXML
+    private Label playerNameLabel;
+
+    @FXML
+    private Label movesLeftLabel;
+
 
     @FXML
     private Label myPlayerName;
@@ -66,15 +74,44 @@ public class ChessGameController {
         String moves = String.valueOf(model.updateMovesLeft());
         movesLeft.setText(moves);
     }
+
     private StackPane createSquare(int i, int j) {
         var square = new StackPane();
         square.getStyleClass().add("square");
-        var piece = new Circle(25);
-        piece.fillProperty().bind(createSquareBinding(model.squareProperty(i, j)));
-        square.getChildren().add(piece);
+
+        // Create an ImageView with the desired image
+        ImageView imageView = new ImageView();
+
+        // Bind the imageProperty of the ImageView based on the square property
+        imageView.imageProperty().bind(createSquareBinding(model.squareProperty(i, j)));
+
+        square.getChildren().add(imageView);
         square.setOnMouseClicked(this::handleMouseClick);
         return square;
     }
+
+
+    private ObjectBinding<Image> createSquareBinding(ReadOnlyObjectProperty<Square> squareProperty) {
+        return new ObjectBinding<>() {
+            {
+                super.bind(squareProperty);
+            }
+
+            @Override
+            protected Image computeValue() {
+                switch (squareProperty.get()) {
+                    case NONE:
+                        return null; // No image for NONE state
+                    case BLACK:
+                        return new Image("/blackBishop.png"); // Set the path to black image
+                    case WHITE:
+                        return new Image("/whiteBishop.png"); // Set the path to white image
+                }
+                return null; // Default case, no image
+            }
+        };
+    }
+
 
     @FXML
     private void handleMouseClick(MouseEvent event) {
@@ -86,24 +123,11 @@ public class ChessGameController {
 //        selector.checkResetPhase(new Position(row,col));
         if (selector.isReadyToMove()) {
             selector.makeMove();
+            HandleGameOver();
         }
     }
 
-    private ObjectBinding<Paint> createSquareBinding(ReadOnlyObjectProperty<Square> squareProperty) {
-        return new ObjectBinding<Paint>() {
-            {
-                super.bind(squareProperty);
-            }
-            @Override
-            protected Paint computeValue() {
-                return switch (squareProperty.get()) {
-                    case NONE -> Color.TRANSPARENT;
-                    case BLACK -> Color.BLACK;
-                    case WHITE -> Color.WHITE;
-                };
-            }
-        };
-    }
+
 
     private void showSelectionPhaseChange(ObservableValue<? extends Phase> value, Phase oldPhase, Phase newPhase) {
         switch (newPhase) {
@@ -115,6 +139,8 @@ public class ChessGameController {
                                     updatedMoves(); }
         }
     }
+
+
 
     private void possibleMoves(Position position){
         for (var i = 0; i < board.getRowCount(); i++) {
@@ -163,9 +189,36 @@ public class ChessGameController {
         stage.show();
     }
 
+
     public void undoPhase(ActionEvent event) throws IOException {
         hideSelection(selector.getFrom());
         hidePossibleMoves();
         selector.reset();
+    }
+
+    public void HandleGameOver(){
+
+        if(model.isGameWon()){
+            alert.setTitle("Game Won");
+            alert.setHeaderText(null);
+            alert.setContentText("\tCongratulations! \nYou won the game.\n" +
+                                 "Your Scores are Saved,\n" +
+                                 "You can go back to start page by clicking on Quit Game");
+
+            // Display the alert dialog
+            alert.showAndWait();
+            board.setDisable(true);
+        }
+        else if (model.isGameLost()) {
+            alert.setTitle("Game LOST");
+            alert.setHeaderText(null);
+            alert.setContentText("!!!! GAME OVER !!!!\n You ran out of Moves.\n" +
+                                "You can go back to start page by clicking on Quit Game ");
+
+            // Display the alert dialog
+            alert.showAndWait();
+            board.setDisable(true);
+        }
+
     }
 }

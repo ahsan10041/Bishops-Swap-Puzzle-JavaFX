@@ -71,7 +71,7 @@
    <right>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="335.0" style="-fx-background-color: #dad7cd; -fx-border-color: #6d6875;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="31.0" layoutY="68.0" text="Player Name :">
+            <Label fx:id="playerNameLabel" layoutX="31.0" layoutY="36.0" text="Player Name :">
                <font>
                   <Font name="Verdana Bold" size="18.0" />
                </font>
@@ -79,13 +79,13 @@
                   <InnerShadow />
                </effect>
             </Label>
-            <Button layoutX="32.0" layoutY="282.0" mnemonicParsing="false" onAction="#undoPhase" prefHeight="39.0" prefWidth="122.0" style="-fx-background-color: #263F73;" text="UNDO SELECTION" textFill="WHITE" />
-            <Label fx:id="myPlayerName" layoutX="184.0" layoutY="62.0" prefHeight="35.0" prefWidth="133.0">
+            <Button fx:id="undoSelectButton" layoutX="32.0" layoutY="282.0" mnemonicParsing="false" onAction="#undoPhase" prefHeight="39.0" prefWidth="122.0" style="-fx-background-color: #263F73;" text="UNDO SELECTION" textFill="WHITE" />
+            <Label fx:id="myPlayerName" layoutX="184.0" layoutY="30.0" prefHeight="35.0" prefWidth="133.0">
                <font>
                   <Font name="Verdana Bold Italic" size="18.0" />
                </font>
             </Label>
-            <Line endX="174.66665649414062" endY="3.0517578125E-5" layoutX="148.0" layoutY="111.0" startX="-136.66664123535156" startY="3.0517578125E-5">
+            <Line endX="174.66665649414062" endY="3.0517578125E-5" layoutX="148.0" layoutY="104.0" startX="-136.66664123535156" startY="3.0517578125E-5">
                <effect>
                   <DropShadow />
                </effect>
@@ -99,7 +99,7 @@
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="147.0" prefWidth="700.0" style="-fx-background-color: #dad7cd; -fx-border-color: #6d6875;" BorderPane.alignment="CENTER">
          <children>
             <Button layoutX="446.0" layoutY="44.0" mnemonicParsing="false" onAction="#SwitchToStart" prefHeight="57.0" prefWidth="210.0" style="-fx-background-color: #263F73;" text="QUIT GAME" textFill="WHITE" />
-            <Label layoutX="54.0" layoutY="62.0" text="Moves Left">
+            <Label fx:id="movesLeftLabel" layoutX="54.0" layoutY="62.0" text="Moves Left">
                <font>
                   <Font name="Verdana Bold" size="18.0" />
                </font>

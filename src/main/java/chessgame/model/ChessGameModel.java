@@ -113,7 +113,7 @@ public class ChessGameModel {
     }
 
     public boolean isGameLost(){
-        return (movesLeft()==0);
+        return (movesLeft()==45);
     }
 
     public boolean isGameWon() {
