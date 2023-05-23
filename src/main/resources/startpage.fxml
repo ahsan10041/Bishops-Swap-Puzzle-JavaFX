@@ -12,11 +12,11 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chessgame.startPageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="570.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chessgame.startPageController">
    <left>
-      <AnchorPane prefHeight="400.0" prefWidth="228.0" style="-fx-background-color: #263F73;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="450.0" prefWidth="228.0" style="-fx-background-color: #263F73;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="18.0" layoutY="221.0" prefHeight="30.0" prefWidth="192.0" style="-fx-alignment: center;" text="Bishop's Dominion" textAlignment="CENTER" textFill="WHITE">
+            <Label layoutX="18.0" layoutY="240.0" prefHeight="30.0" prefWidth="192.0" style="-fx-alignment: center;" text="Bishop's Dominion" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Verdana Bold" size="16.0" />
                </font>
@@ -24,7 +24,7 @@
                   <DropShadow />
                </effect>
             </Label>
-            <Label layoutX="29.0" layoutY="257.0" prefHeight="30.0" prefWidth="157.0" style="-fx-alignment: center;" text="Planet A-SQUARE" textFill="WHITE">
+            <Label layoutX="29.0" layoutY="276.0" prefHeight="30.0" prefWidth="157.0" style="-fx-alignment: center;" text="Planet A-SQUARE" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="12.0" />
                </font>
@@ -32,14 +32,14 @@
                   <DropShadow />
                </effect>
             </Label>
-            <Line endX="100.0" layoutX="113.0" layoutY="256.0" smooth="false" startX="-100.0" stroke="WHITE" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" />
+            <Line endX="100.0" layoutX="113.0" layoutY="275.0" smooth="false" startX="-100.0" stroke="WHITE" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" />
             <AnchorPane />
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="32.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="32.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@image.png" />
                </image>
             </ImageView>
-            <Label layoutX="39.0" layoutY="361.0" prefHeight="30.0" prefWidth="173.0" text="Copyrights (c). All rights reserved" textFill="WHITE">
+            <Label layoutX="39.0" layoutY="406.0" prefHeight="30.0" prefWidth="173.0" text="Copyrights (c). All rights reserved" textFill="WHITE">
                <effect>
                   <DropShadow />
                </effect>
@@ -51,9 +51,9 @@
       </AnchorPane>
    </left>
    <right>
-      <AnchorPane prefHeight="400.0" prefWidth="292.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="450.0" prefWidth="342.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="31.0" layoutY="36.0" prefHeight="30.0" prefWidth="234.0" style="-fx-alignment: center;" text="WELCOME" textAlignment="CENTER" textFill="#0000008c">
+            <Label layoutX="54.0" layoutY="57.0" prefHeight="30.0" prefWidth="234.0" style="-fx-alignment: center;" text="WELCOME" textAlignment="CENTER" textFill="#0000008c">
                <font>
                   <Font name="Verdana Bold" size="24.0" />
                </font>
@@ -61,18 +61,18 @@
                   <InnerShadow />
                </effect>
             </Label>
-            <Label layoutX="17.0" layoutY="157.0" prefHeight="20.0" prefWidth="87.0" text="Player Name ">
+            <Label layoutX="57.0" layoutY="176.0" prefHeight="20.0" prefWidth="87.0" text="Player Name ">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="playerNameTextField" layoutX="111.0" layoutY="153.0" prefHeight="29.0" prefWidth="138.0" promptText="Enter your Name">
+            <TextField fx:id="playerNameTextField" layoutX="151.0" layoutY="172.0" prefHeight="29.0" prefWidth="138.0" promptText="Enter your Name">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Button fx:id="startGameButton" layoutX="17.0" layoutY="238.0" mnemonicParsing="false" onAction="#SwitchToGame" prefHeight="31.0" prefWidth="253.0" style="-fx-background-color: #263F73;" text="START GAME" textFill="WHITE" />
-            <Line endX="126.66668701171875" endY="7.62939453125E-6" layoutX="148.0" layoutY="84.0" startX="-126.66668701171875" startY="7.62939453125E-6">
+            <Button fx:id="startGameButton" layoutX="52.0" layoutY="257.0" mnemonicParsing="false" onAction="#SwitchToGame" prefHeight="31.0" prefWidth="253.0" style="-fx-background-color: #263F73;" text="START GAME" textFill="WHITE" />
+            <Line endX="176.0" endY="7.62939453125E-6" layoutX="148.0" layoutY="104.0" startX="-126.66668701171875" startY="7.62939453125E-6">
                <effect>
                   <DropShadow />
                </effect>

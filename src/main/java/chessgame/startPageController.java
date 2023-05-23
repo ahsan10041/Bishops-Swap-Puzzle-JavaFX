@@ -27,6 +27,7 @@ public class startPageController {
     public void SwitchToGame(ActionEvent event) throws IOException {
         PlayerName = playerNameTextField.getText();
         game.setPlayerName(PlayerName);
+        game.setMovesLeft(50);
         Parent root = FXMLLoader.load(getClass().getResource("/ui2.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);

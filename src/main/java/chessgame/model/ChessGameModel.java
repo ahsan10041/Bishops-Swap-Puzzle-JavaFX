@@ -1,12 +1,18 @@
 package chessgame.model;
 
+import chessgame.Game;
+import chessgame.startPageController;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
+
 
 public class ChessGameModel {
 
     public static final int BOARD_ROW = 5;
     public static final int BOARD_COL = 4;
+
+    private startPageController startpage = new startPageController();
+    private Game thisGame = new Game(startpage.getCurrentPlayer());
 
     private ReadOnlyObjectWrapper<Square>[][] board = new ReadOnlyObjectWrapper[BOARD_ROW][BOARD_COL];
 
@@ -52,7 +58,7 @@ public class ChessGameModel {
     }
 
     public boolean canMove(Position from, Position to) {
-        return isOnBoard(from) && isOnBoard(to) && !isEmpty(from) && isEmpty(to) && isPawnMove(from, to) &&
+        return isOnBoard(from) && isOnBoard(to) && !isEmpty(from) && isEmpty(to) && isBishopMove(from, to) &&
                 isSafe(from,to);
     }
 
@@ -64,7 +70,7 @@ public class ChessGameModel {
         return 0 <= p.row() && p.row() < BOARD_ROW && 0 <= p.col() && p.col() < BOARD_COL;
     }
 
-    public static boolean isPawnMove(Position from, Position to) {
+    public static boolean isBishopMove(Position from, Position to) {
         var rowDiff = Math.abs(from.row() - to.row());
         var colDiff = Math.abs(from.col() - to.col());
         return rowDiff == colDiff;
@@ -104,6 +110,30 @@ public class ChessGameModel {
             sb.append('\n');
         }
         return sb.toString();
+    }
+
+    public boolean isGameLost(){
+        return (movesLeft()==0);
+    }
+
+    public boolean isGameWon() {
+        boolean whiteDone = getSquare(new Position(0,1)) == Square.WHITE && getSquare(new Position(0,3)) == Square.WHITE;
+        boolean blackDone = getSquare(new Position(4,1)) == Square.BLACK && getSquare(new Position(4,3)) == Square.BLACK;
+
+        return whiteDone && blackDone;
+    }
+
+    public String playerName(){
+        return thisGame.getPlayerName();
+    }
+
+    public int updateMovesLeft(){
+        thisGame.decMoves();
+        return movesLeft();
+    }
+    public int movesLeft(){
+        return thisGame.getMovesLeft();
+
     }
 
     public static void main(String[] args) {

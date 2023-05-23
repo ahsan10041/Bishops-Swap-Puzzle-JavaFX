@@ -13,6 +13,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="700.0" style="-fx-background-color: #dad7cd;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chessgame.ChessGameController">
@@ -70,7 +71,7 @@
    <right>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="335.0" style="-fx-background-color: #dad7cd; -fx-border-color: #6d6875;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="12.0" layoutY="68.0" text="Player Name:">
+            <Label layoutX="31.0" layoutY="68.0" text="Player Name :">
                <font>
                   <Font name="Verdana Bold" size="18.0" />
                </font>
@@ -78,12 +79,17 @@
                   <InnerShadow />
                </effect>
             </Label>
-            <Button layoutX="131.0" layoutY="188.0" mnemonicParsing="false" onAction="#undoPhase" text="UNDO" />
-            <Label fx:id="myPlayerName" layoutX="157.0" layoutY="65.0" prefHeight="30.0" prefWidth="151.0">
+            <Button layoutX="32.0" layoutY="282.0" mnemonicParsing="false" onAction="#undoPhase" prefHeight="39.0" prefWidth="122.0" style="-fx-background-color: #263F73;" text="UNDO SELECTION" textFill="WHITE" />
+            <Label fx:id="myPlayerName" layoutX="184.0" layoutY="62.0" prefHeight="35.0" prefWidth="133.0">
                <font>
-                  <Font name="Verdana" size="18.0" />
+                  <Font name="Verdana Bold Italic" size="18.0" />
                </font>
             </Label>
+            <Line endX="174.66665649414062" endY="3.0517578125E-5" layoutX="148.0" layoutY="111.0" startX="-136.66664123535156" startY="3.0517578125E-5">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Line>
          </children>
          <padding>
             <Insets bottom="3.0" />
@@ -92,8 +98,8 @@
    <bottom>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="147.0" prefWidth="700.0" style="-fx-background-color: #dad7cd; -fx-border-color: #6d6875;" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="446.0" layoutY="38.0" mnemonicParsing="false" onAction="#SwitchToStart" prefHeight="73.0" prefWidth="210.0" style="-fx-background-color: #263F73;" text="QUIT GAME" textFill="WHITE" />
-            <Label layoutX="35.0" layoutY="63.0" text="Moves Left">
+            <Button layoutX="446.0" layoutY="44.0" mnemonicParsing="false" onAction="#SwitchToStart" prefHeight="57.0" prefWidth="210.0" style="-fx-background-color: #263F73;" text="QUIT GAME" textFill="WHITE" />
+            <Label layoutX="54.0" layoutY="62.0" text="Moves Left">
                <font>
                   <Font name="Verdana Bold" size="18.0" />
                </font>
@@ -101,7 +107,7 @@
                   <InnerShadow />
                </effect>
             </Label>
-            <TextField editable="false" layoutX="161.0" layoutY="50.0" prefHeight="50.0" prefWidth="67.0">
+            <TextField fx:id="movesLeft" editable="false" layoutX="180.0" layoutY="49.0" prefHeight="50.0" prefWidth="67.0">
                <font>
                   <Font size="18.0" />
                </font>

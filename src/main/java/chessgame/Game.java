@@ -13,6 +13,11 @@ public class Game {
         movesLeft = 50;
     }
 
+    public Game(Game game){
+        this.playerName = game.playerName;
+        this.movesLeft = game.movesLeft;
+    }
+
     public static void setPlayerName(String playerName) {
         Game.playerName = playerName;
     }
@@ -28,4 +33,10 @@ public class Game {
     public static int getMovesLeft() {
         return movesLeft;
     }
+
+    public void decMoves(){
+        movesLeft--;
+    }
+
+
 }

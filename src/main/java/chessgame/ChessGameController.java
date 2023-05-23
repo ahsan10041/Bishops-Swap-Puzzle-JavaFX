@@ -32,11 +32,14 @@ public class ChessGameController {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    private startPageController startpage = new startPageController();
-
+//    private startPageController startpage = new startPageController();
+//    private Game thisGame = new Game(startpage.getCurrentPlayer());
 
     @FXML
     private Label myPlayerName;
+
+    @FXML
+    private TextField movesLeft;
 
     @FXML
     private GridPane board;
@@ -47,7 +50,9 @@ public class ChessGameController {
 
     @FXML
     private void initialize() {
-        myPlayerName.setText((startpage.getCurrentPlayer()).getPlayerName());
+        myPlayerName.setText((model.playerName()));
+        String moves = String.valueOf(model.movesLeft());
+        movesLeft.setText(moves);
         for (var i = 0; i < board.getRowCount(); i++) {
             for (var j = 0; j < board.getColumnCount(); j++) {
                 var square = createSquare(i, j);
@@ -57,6 +62,10 @@ public class ChessGameController {
         selector.phaseProperty().addListener(this::showSelectionPhaseChange);
     }
 
+    private void updatedMoves(){
+        String moves = String.valueOf(model.updateMovesLeft());
+        movesLeft.setText(moves);
+    }
     private StackPane createSquare(int i, int j) {
         var square = new StackPane();
         square.getStyleClass().add("square");
@@ -102,7 +111,8 @@ public class ChessGameController {
             case SELECT_TO -> {showSelection(selector.getFrom());
                               possibleMoves(selector.getFrom());}
             case READY_TO_MOVE -> {hideSelection(selector.getFrom());
-                                    hidePossibleMoves();}
+                                    hidePossibleMoves();
+                                    updatedMoves(); }
         }
     }
 
