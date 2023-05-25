@@ -71,6 +71,11 @@
    <right>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="335.0" style="-fx-background-color: #dad7cd; -fx-border-color: #6d6875;" BorderPane.alignment="CENTER">
          <children>
+            <TextField fx:id="movesLeft" editable="false" layoutX="150.0" layoutY="141.0" prefHeight="37.0" prefWidth="45.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
             <Label fx:id="playerNameLabel" layoutX="31.0" layoutY="36.0" text="Player Name :">
                <font>
                   <Font name="Verdana Bold" size="18.0" />
@@ -90,6 +95,14 @@
                   <DropShadow />
                </effect>
             </Line>
+            <Label fx:id="movesLeftLabel" layoutX="31.0" layoutY="149.0" text="Moves Left">
+               <font>
+                  <Font name="Verdana Bold" size="18.0" />
+               </font>
+               <effect>
+                  <InnerShadow />
+               </effect>
+            </Label>
          </children>
          <padding>
             <Insets bottom="3.0" />
@@ -99,19 +112,6 @@
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="147.0" prefWidth="700.0" style="-fx-background-color: #dad7cd; -fx-border-color: #6d6875;" BorderPane.alignment="CENTER">
          <children>
             <Button layoutX="446.0" layoutY="44.0" mnemonicParsing="false" onAction="#SwitchToStart" prefHeight="57.0" prefWidth="210.0" style="-fx-background-color: #263F73;" text="QUIT GAME" textFill="WHITE" />
-            <Label fx:id="movesLeftLabel" layoutX="54.0" layoutY="62.0" text="Moves Left">
-               <font>
-                  <Font name="Verdana Bold" size="18.0" />
-               </font>
-               <effect>
-                  <InnerShadow />
-               </effect>
-            </Label>
-            <TextField fx:id="movesLeft" editable="false" layoutX="180.0" layoutY="49.0" prefHeight="50.0" prefWidth="67.0">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </TextField>
          </children></AnchorPane>
    </bottom>
 </BorderPane>
