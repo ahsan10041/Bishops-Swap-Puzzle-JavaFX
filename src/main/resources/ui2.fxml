@@ -111,7 +111,13 @@
    <bottom>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="147.0" prefWidth="700.0" style="-fx-background-color: #dad7cd; -fx-border-color: #6d6875;" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="446.0" layoutY="44.0" mnemonicParsing="false" onAction="#SwitchToStart" prefHeight="57.0" prefWidth="210.0" style="-fx-background-color: #263F73;" text="QUIT GAME" textFill="WHITE" />
+            <Button layoutX="446.0" layoutY="44.0" mnemonicParsing="false" onAction="#SwitchToStart" prefHeight="57.0" prefWidth="210.0" style="-fx-background-color: #263F73;" text="QUIT GAME" textFill="WHITE">
+               <font>
+                  <Font name="Bodoni MT Black Italic" size="24.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect></Button>
          </children></AnchorPane>
    </bottom>
 </BorderPane>

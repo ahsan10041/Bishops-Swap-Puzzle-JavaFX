@@ -71,7 +71,10 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Button fx:id="startGameButton" layoutX="52.0" layoutY="257.0" mnemonicParsing="false" onAction="#SwitchToGame" prefHeight="31.0" prefWidth="253.0" style="-fx-background-color: #263F73;" text="START GAME" textFill="WHITE" />
+            <Button fx:id="startGameButton" layoutX="52.0" layoutY="257.0" mnemonicParsing="false" onAction="#SwitchToGame" prefHeight="31.0" prefWidth="253.0" style="-fx-background-color: #263F73;" text="START GAME" textFill="WHITE">
+               <font>
+                  <Font name="Bodoni MT Black Italic" size="24.0" />
+               </font></Button>
             <Line endX="176.0" endY="7.62939453125E-6" layoutX="148.0" layoutY="104.0" startX="-126.66668701171875" startY="7.62939453125E-6">
                <effect>
                   <DropShadow />

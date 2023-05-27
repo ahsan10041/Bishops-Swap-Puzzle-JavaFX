@@ -191,9 +191,12 @@ public class ChessGameController {
 
 
     public void undoPhase(ActionEvent event) throws IOException {
-        hideSelection(selector.getFrom());
+        try{hideSelection(selector.getFrom());
         hidePossibleMoves();
-        selector.reset();
+        selector.reset();}
+        catch (Exception e){
+
+        }
     }
 
     public void HandleGameOver(){

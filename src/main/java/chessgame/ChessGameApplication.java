@@ -13,7 +13,7 @@ public class ChessGameApplication extends Application {
         @Override
         public void start (Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/startpage.fxml"));
-        primaryStage.setTitle("Hello world");
+        primaryStage.setTitle("BISHOP'S DOMINION - START PAGE");
         primaryStage.setScene(new Scene(root, 570, 450));
         primaryStage.setResizable(false);
         primaryStage.show();
