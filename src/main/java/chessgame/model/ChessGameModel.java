@@ -1,7 +1,7 @@
 package chessgame.model;
 
 import chessgame.Game;
-import chessgame.startPageController;
+import chessgame.StartPageController;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 
@@ -22,7 +22,7 @@ public class ChessGameModel {
      */
     public static final int BOARD_COL = 4;
 
-    private startPageController startpage = new startPageController();
+    private StartPageController startpage = new StartPageController();
     private Game thisGame = new Game(startpage.getCurrentPlayer());
 
     private ReadOnlyObjectWrapper<Square>[][] board = new ReadOnlyObjectWrapper[BOARD_ROW][BOARD_COL];

@@ -27,6 +27,10 @@ import java.io.IOException;
 
 import static chessgame.ChessGameMoveSelector.Phase;
 
+/**
+ * The controller class for the Chess Game application.
+ * Handles user interaction and manages the game logic.
+ */
 public class ChessGameController {
 
     Alert alert = new Alert(AlertType.INFORMATION);
@@ -56,6 +60,10 @@ public class ChessGameController {
 
     private ChessGameMoveSelector selector = new ChessGameMoveSelector(model);
 
+    /**
+     * Initializes the Chess Game controller.
+     * Sets up the initial state of the game board and handles phase changes.
+     */
     @FXML
     private void initialize() {
         myPlayerName.setText((model.playerName()));
@@ -75,6 +83,13 @@ public class ChessGameController {
         movesLeft.setText(moves);
     }
 
+    /**
+     * Creates a square on the game board with the given position.
+     *
+     * @param i The row index of the square.
+     * @param j The column index of the square.
+     * @return The created StackPane representing the square.
+     */
     private StackPane createSquare(int i, int j) {
         var square = new StackPane();
         square.getStyleClass().add("square");
@@ -91,6 +106,12 @@ public class ChessGameController {
     }
 
 
+    /**
+     * Creates an ObjectBinding for the square image based on the square property.
+     *
+     * @param squareProperty The ReadOnlyObjectProperty representing the square.
+     * @return The ObjectBinding for the square image.
+     */
     private ObjectBinding<Image> createSquareBinding(ReadOnlyObjectProperty<Square> squareProperty) {
         return new ObjectBinding<>() {
             {
@@ -112,7 +133,12 @@ public class ChessGameController {
         };
     }
 
-
+    /**
+     * Handles the mouse click event on a game board square.
+     * Updates the selected position and checks if a move can be made.
+     *
+     * @param event The MouseEvent representing the mouse click event.
+     */
     @FXML
     private void handleMouseClick(MouseEvent event) {
         var square = (StackPane) event.getSource();
@@ -127,8 +153,14 @@ public class ChessGameController {
         }
     }
 
-
-
+    /**
+     * Handles the phase change event in the move selector.
+     * Updates the UI based on the new phase.
+     *
+     * @param value    The ObservableValue representing the new phase.
+     * @param oldPhase The old phase.
+     * @param newPhase The new phase.
+     */
     private void showSelectionPhaseChange(ObservableValue<? extends Phase> value, Phase oldPhase, Phase newPhase) {
         switch (newPhase) {
             case SELECT_FROM -> {}
@@ -140,8 +172,11 @@ public class ChessGameController {
         }
     }
 
-
-
+    /**
+     * Displays the possible moves from the given position on the game board.
+     *
+     * @param position The position from which to display possible moves.
+     */
     private void possibleMoves(Position position){
         for (var i = 0; i < board.getRowCount(); i++) {
             for (var j = 0; j < board.getColumnCount(); j++) {
@@ -153,6 +188,9 @@ public class ChessGameController {
         }
     }
 
+    /**
+     * Hides the possible moves displayed on the game board.
+     */
     private void hidePossibleMoves() {
         for (var i = 0; i < board.getRowCount(); i++) {
             for (var j = 0; j < board.getColumnCount(); j++) {
@@ -163,16 +201,33 @@ public class ChessGameController {
     }
 
 
+    /**
+     * Displays the selection effect on the square at the given position.
+     *
+     * @param position The position of the selected square.
+     */
     private void showSelection(Position position) {
         var square = getSquare(position);
         square.getStyleClass().add("selected");
     }
 
+    /**
+     * Hides the selection effect on the square at the given position.
+     *
+     * @param position The position of the deselected square.
+     */
     private void hideSelection(Position position) {
         var square = getSquare(position);
         square.getStyleClass().remove("selected");
     }
 
+    /**
+     * Retrieves the StackPane representing the square at the given position on the game board.
+     *
+     * @param position The position of the square.
+     * @return The StackPane representing the square.
+     * @throws AssertionError if the square is not found.
+     */
     private StackPane getSquare(Position position) {
         for (var child : board.getChildren()) {
             if (GridPane.getRowIndex(child) == position.row() && GridPane.getColumnIndex(child) == position.col()) {
@@ -181,6 +236,12 @@ public class ChessGameController {
         }
         throw new AssertionError();
     }
+    /**
+     * Switches the scene to the start page.
+     *
+     * @param event The ActionEvent representing the button click event.
+     * @throws IOException if an I/O error occurs.
+     */
     public void SwitchToStart(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/startpage.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -189,7 +250,12 @@ public class ChessGameController {
         stage.show();
     }
 
-
+    /**
+     * Undoes the current piece selection
+     *
+     * @param event The ActionEvent representing the button click event.
+     * @throws IOException if an I/O error occurs.
+     */
     public void undoPhase(ActionEvent event) throws IOException {
         try{hideSelection(selector.getFrom());
         hidePossibleMoves();
@@ -199,6 +265,10 @@ public class ChessGameController {
         }
     }
 
+    /**
+     * Handles the game over scenario by displaying an alert dialog.
+     * Checks if the game is won or lost and shows the appropriate message.
+     */
     public void HandleGameOver(){
 
         if(model.isGameWon()){

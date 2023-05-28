@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 
-public class startPageController {
+public class StartPageController {
     private Stage stage;
     private Scene scene;
     private Parent root;
