@@ -47,8 +47,15 @@ public class startPageController {
             stage.setScene(scene);
             stage.show();
         }
+    }
 
-
+    public void showHighScores(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("/highscores.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setTitle("Bishop's Dominion");
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void exitGame(ActionEvent event) throws IOException {

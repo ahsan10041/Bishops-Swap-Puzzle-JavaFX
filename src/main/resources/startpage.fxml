@@ -71,7 +71,7 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Button fx:id="startGameButton" layoutX="52.0" layoutY="219.0" mnemonicParsing="false" onAction="#SwitchToGame" prefHeight="31.0" prefWidth="253.0" style="-fx-background-color: #263F73;" text="START GAME" textFill="WHITE">
+            <Button fx:id="startGameButton" layoutX="68.0" layoutY="219.0" mnemonicParsing="false" onAction="#SwitchToGame" prefHeight="44.0" prefWidth="224.0" style="-fx-background-color: #263F73;" text="START GAME" textFill="WHITE">
                <font>
                   <Font name="Bodoni MT Black Italic" size="24.0" />
                </font></Button>
@@ -80,12 +80,17 @@
                   <DropShadow />
                </effect>
             </Line>
-            <Button fx:id="exitGameButton" layoutX="85.0" layoutY="363.0" mnemonicParsing="false" onAction="#exitGame" prefHeight="44.0" prefWidth="182.0" style="-fx-background-color: #263F73;" text="EXIT GAME" textFill="WHITE">
+            <Button fx:id="exitGameButton" layoutX="82.0" layoutY="386.0" mnemonicParsing="false" onAction="#exitGame" prefHeight="34.0" prefWidth="201.0" style="-fx-background-color: #263F73;" text="EXIT GAME" textFill="WHITE">
                <font>
                   <Font name="Bodoni MT Black Italic" size="18.0" />
                </font>
             </Button>
             <Label fx:id="warningLabel" layoutX="70.0" layoutY="117.0" prefHeight="17.0" prefWidth="219.0" style="-fx-alignment: center;" textFill="#fb0000" />
+            <Button fx:id="highScoreButton" layoutX="82.0" layoutY="334.0" mnemonicParsing="false" onAction="#showHighScores" prefHeight="34.0" prefWidth="196.0" style="-fx-background-color: #263F73;" text="HIGH SCORES" textFill="WHITE">
+               <font>
+                  <Font name="Bodoni MT Black Italic" size="18.0" />
+               </font>
+            </Button>
          </children></AnchorPane>
    </right>
 </BorderPane>
