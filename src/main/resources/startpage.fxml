@@ -80,6 +80,11 @@
                   <DropShadow />
                </effect>
             </Line>
+            <Button fx:id="exitGameButton" layoutX="52.0" layoutY="346.0" mnemonicParsing="false" onAction="#exitGame" prefHeight="31.0" prefWidth="253.0" style="-fx-background-color: #263F73;" text="EXIT GAME" textFill="WHITE">
+               <font>
+                  <Font name="Bodoni MT Black Italic" size="24.0" />
+               </font>
+            </Button>
          </children></AnchorPane>
    </right>
 </BorderPane>

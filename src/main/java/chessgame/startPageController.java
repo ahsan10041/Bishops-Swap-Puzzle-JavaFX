@@ -22,6 +22,9 @@ public class startPageController {
     @FXML
     private TextField playerNameTextField;
 
+    @FXML
+    private Button exitGameButton;
+
     String PlayerName;
 
     public void SwitchToGame(ActionEvent event) throws IOException {
@@ -34,6 +37,11 @@ public class startPageController {
         stage.setTitle("Bishop's Dominion");
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void exitGame(ActionEvent event) throws IOException {
+        Stage stage = (Stage) exitGameButton.getScene().getWindow();
+        stage.close();
     }
 
     public static Game getCurrentPlayer(){
