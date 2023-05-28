@@ -16,3 +16,7 @@
 .square.allowed{
     -fx-background-color: "#bde0fe";
 }
+
+.square.unsafe{
+    -fx-background-color: "#ff4f4f";
+}
