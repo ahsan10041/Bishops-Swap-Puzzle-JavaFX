@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -25,18 +26,29 @@ public class startPageController {
     @FXML
     private Button exitGameButton;
 
+    @FXML
+    private Label warningLabel;
+
     String PlayerName;
 
     public void SwitchToGame(ActionEvent event) throws IOException {
-        PlayerName = playerNameTextField.getText();
-        game.setPlayerName(PlayerName);
-        game.setMovesLeft(50);
-        Parent root = FXMLLoader.load(getClass().getResource("/ui2.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setTitle("Bishop's Dominion");
-        stage.setScene(scene);
-        stage.show();
+
+        if(playerNameTextField.getText().isBlank()){
+            warningLabel.setText("Please Input Your Name");
+        }
+        else {
+            PlayerName = playerNameTextField.getText();
+            game.setPlayerName(PlayerName);
+            game.setMovesLeft(50);
+            Parent root = FXMLLoader.load(getClass().getResource("/ui2.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setTitle("Bishop's Dominion");
+            stage.setScene(scene);
+            stage.show();
+        }
+
+
     }
 
     public void exitGame(ActionEvent event) throws IOException {

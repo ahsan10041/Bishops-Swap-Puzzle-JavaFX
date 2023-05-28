@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -13,7 +14,7 @@ public class ChessGameApplication extends Application {
         @Override
         public void start (Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/startpage.fxml"));
-        primaryStage.setTitle("BISHOP'S DOMINION - START PAGE");
+        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(new Scene(root, 570, 450));
         primaryStage.setResizable(false);
         primaryStage.show();
