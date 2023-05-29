@@ -3,6 +3,7 @@ package chessgame;
 import chessgame.model.ChessGameModel;
 import chessgame.model.Position;
 import chessgame.model.Square;
+import chessgame.util.JsonHelper;
 import javafx.beans.binding.ObjectBinding;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.value.ObservableValue;
@@ -24,6 +25,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
 import java.io.IOException;
+import java.time.ZonedDateTime;
 
 import static chessgame.ChessGameMoveSelector.Phase;
 
@@ -293,5 +295,11 @@ public class ChessGameController {
             board.setDisable(true);
         }
 
+        JsonHelper.saveGame(new Game(
+                model.playerName(),
+                50 - model.movesLeft(),
+                model.isSolved(),
+                ZonedDateTime.now()
+        ));
     }
 }

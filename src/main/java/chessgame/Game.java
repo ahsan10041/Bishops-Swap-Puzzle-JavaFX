@@ -1,11 +1,18 @@
 package chessgame;
+
+import java.time.ZonedDateTime;
+
 /**
  * The Game class represents a chess game.
  * It stores the player's name and the number of moves left.
  */
 public class Game {
-    public static String playerName;
-    public static int movesLeft;
+    private String playerName;
+    private int movesLeft;
+
+    private boolean isSolved;
+
+    private ZonedDateTime createdAt;
 
     /**
      * Default constructor for the Game class.
@@ -15,15 +22,12 @@ public class Game {
         playerName = "";
         movesLeft = 50;
     }
-    /**
-     * Constructor for the Game class with a player name.
-     * Initializes the player's name with the given name and the number of moves left to 50.
-     *
-     * @param name The player's name.
-     */
-    public Game(String name){
-        playerName = name;
-        movesLeft = 50;
+
+    public Game(String playerName, int movesLeft, boolean isSolved, ZonedDateTime createdAt) {
+        this.playerName = playerName;
+        this.movesLeft = movesLeft;
+        this.isSolved = isSolved;
+        this.createdAt = createdAt;
     }
 
     /**
@@ -35,6 +39,8 @@ public class Game {
     public Game(Game game){
         this.playerName = game.playerName;
         this.movesLeft = game.movesLeft;
+        this.isSolved = game.isSolved;
+        this.createdAt = game.createdAt;
     }
 
     /**
@@ -42,8 +48,8 @@ public class Game {
      *
      * @param playerName The player's name.
      */
-    public static void setPlayerName(String playerName) {
-        Game.playerName = playerName;
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
     }
 
     /**
@@ -51,8 +57,8 @@ public class Game {
      *
      * @param movesLeft The number of moves left.
      */
-    public static void setMovesLeft(int movesLeft) {
-        Game.movesLeft = movesLeft;
+    public void setMovesLeft(int movesLeft) {
+        this.movesLeft = movesLeft;
     }
 
     /**
@@ -60,8 +66,8 @@ public class Game {
      *
      * @return The player's name.
      */
-    public static String getPlayerName() {
-        return playerName;
+    public String getPlayerName() {
+        return this.playerName;
     }
 
 
@@ -70,8 +76,16 @@ public class Game {
      *
      * @return The number of moves left.
      */
-    public static int getMovesLeft() {
-        return movesLeft;
+    public int getMovesLeft() {
+        return this.movesLeft;
+    }
+
+    public boolean getIsSolved() {
+        return this.isSolved;
+    }
+
+    public void setIsSolved(boolean value) {
+        this.isSolved = value;
     }
 
     /**

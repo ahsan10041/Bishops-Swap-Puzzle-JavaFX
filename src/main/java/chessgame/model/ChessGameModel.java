@@ -203,6 +203,7 @@ public class ChessGameModel {
      * @return true if the game is lost, false otherwise
      */
     public boolean isGameLost(){
+        thisGame.setIsSolved(false);
         return (movesLeft()==0);
     }
 
@@ -216,6 +217,7 @@ public class ChessGameModel {
         boolean whiteDone = getSquare(new Position(0,1)) == Square.WHITE && getSquare(new Position(0,3)) == Square.WHITE;
         boolean blackDone = getSquare(new Position(4,1)) == Square.BLACK && getSquare(new Position(4,3)) == Square.BLACK;
 
+        thisGame.setIsSolved(true);
         return whiteDone && blackDone;
     }
 
@@ -226,6 +228,10 @@ public class ChessGameModel {
      */
     public String playerName(){
         return thisGame.getPlayerName();
+    }
+
+    public Boolean isSolved() {
+        return thisGame.getIsSolved();
     }
 
     /**
