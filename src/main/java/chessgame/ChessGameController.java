@@ -3,7 +3,7 @@ package chessgame;
 import chessgame.model.ChessGameModel;
 import chessgame.model.Position;
 import chessgame.model.Square;
-import chessgame.util.JsonHelper;
+import util.JsonHelper;
 import javafx.beans.binding.ObjectBinding;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.value.ObservableValue;
@@ -245,7 +245,15 @@ public class ChessGameController {
      * @throws IOException if an I/O error occurs.
      */
     public void SwitchToStart(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/startpage.fxml"));
+        JsonHelper.saveGame(new Game(
+                model.playerName(),
+                model.movesLeft(),
+                model.isSolved(),
+                50 - model.movesLeft(),
+                model.createdAt()
+        ));
+
+        Parent root = FXMLLoader.load(getClass().getResource("/highscores.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -294,12 +302,5 @@ public class ChessGameController {
             alert.showAndWait();
             board.setDisable(true);
         }
-
-        JsonHelper.saveGame(new Game(
-                model.playerName(),
-                50 - model.movesLeft(),
-                model.isSolved(),
-                ZonedDateTime.now()
-        ));
     }
 }
