@@ -5,6 +5,7 @@ import chessgame.StartPageController;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 
+import java.time.ZonedDateTime;
 
 
 /**
@@ -233,6 +234,8 @@ public class ChessGameModel {
     public Boolean isSolved() {
         return thisGame.getIsSolved();
     }
+
+    public ZonedDateTime createdAt() { return thisGame.getCreatedAt(); }
 
     /**
      * Updates and returns the number of moves left for the current player.
