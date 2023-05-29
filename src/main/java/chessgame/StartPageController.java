@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.time.ZonedDateTime;
 
 /**
  * The controller class for the Start Page of the chess game.
@@ -50,6 +51,8 @@ public class StartPageController {
             PlayerName = playerNameTextField.getText();
             game.setPlayerName(PlayerName);
             game.setMovesLeft(50);
+            game.setIsSolved(false);
+            game.setCreatedAt(ZonedDateTime.now());
             Parent root = FXMLLoader.load(getClass().getResource("/ui2.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
