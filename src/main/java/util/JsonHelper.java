@@ -26,6 +26,7 @@ public class JsonHelper {
                 mapper.readValue(file, new TypeReference<List<Game>>() {});
             } catch (IOException e) {
                 e.printStackTrace();
+                games = new ArrayList<>();
             }
         }
 

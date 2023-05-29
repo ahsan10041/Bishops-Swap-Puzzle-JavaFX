@@ -12,6 +12,8 @@ public class Game {
 
     private boolean isSolved;
 
+    private int movesMade;
+
     private ZonedDateTime createdAt;
 
     /**
@@ -23,10 +25,11 @@ public class Game {
         movesLeft = 50;
     }
 
-    public Game(String playerName, int movesLeft, boolean isSolved, ZonedDateTime createdAt) {
+    public Game(String playerName, int movesLeft, boolean isSolved, int movesMade, ZonedDateTime createdAt) {
         this.playerName = playerName;
         this.movesLeft = movesLeft;
         this.isSolved = isSolved;
+        this.movesMade = movesMade;
         this.createdAt = createdAt;
     }
 
@@ -87,6 +90,10 @@ public class Game {
     public void setIsSolved(boolean value) {
         this.isSolved = value;
     }
+
+    public void setCreatedAt(ZonedDateTime value) { this.createdAt = value; }
+
+    public ZonedDateTime getCreatedAt() { return this.createdAt; }
 
     /**
      * Decreases the number of moves left by 1.
