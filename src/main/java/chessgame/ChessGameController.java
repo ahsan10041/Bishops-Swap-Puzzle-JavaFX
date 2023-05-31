@@ -49,6 +49,9 @@ public class ChessGameController {
     private Label playerNameLabel;
 
     @FXML
+    private Label quitButtonMessage;
+
+    @FXML
     private Label movesLeftLabel;
 
 
@@ -289,12 +292,12 @@ public class ChessGameController {
 
         if(model.isGameWon()){
             thisGame.setIsSolved(true);
+            quitButtonMessage.setText("\tCONGRATULATIONS!! \n To Check Updated HighScores Press =>");
             alert.setTitle("Game Won");
             alert.setHeaderText(null);
-            alert.setContentText("\t\tCongratulations! \nYou won the game.\n" +
-                                    "You Won by using only " + thisGame.getMovesLeft() + " Moves\n" +
-                                    "Your Scores are Saved,\n" +
-                                    "You can go back to start page by clicking on Quit Game");
+            alert.setContentText("\t\tCongratulations! \n\nYou won the game.\n" +
+                                    "You Won by using only " + (50 - thisGame.getMovesLeft()) + " Moves\n" +
+                                    "Your Scores are Saved,\n");
 
             // Display the alert dialog
             alert.showAndWait();
@@ -302,6 +305,7 @@ public class ChessGameController {
         }
         else if (isGameLost()) {
             thisGame.setIsSolved(false);
+            quitButtonMessage.setText("Better luck next time,\nTo Check HighScores Press =>");
             alert.setTitle("Game LOST");
             alert.setHeaderText(null);
             alert.setContentText("!!!! GAME OVER !!!!\n You ran out of Moves.\n" +
