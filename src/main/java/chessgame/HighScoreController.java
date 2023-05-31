@@ -19,17 +19,44 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * The controller class for the high score page.
+ */
 public class HighScoreController {
 
+    /**
+     * The table view that displays the high scores.
+     */
     @FXML
     private TableView<Game> table;
+
+    /**
+     * The table column for the player name.
+     */
     @FXML
     private TableColumn<Game, String> playerName;
+
+    /**
+     * The table column for the number of moves left.
+     */
     @FXML
     private TableColumn<Game, Integer> movesLeft;
+
+    /**
+     * The stage for the scene.
+     */
     private Stage stage;
+
+    /**
+     * The scene for the high score page.
+     */
     private Scene scene;
 
+    /**
+     * Initializes the high score page.
+     *
+     * @throws IOException if an I/O error occurs
+     */
     @FXML
     public void initialize() throws IOException {
         playerName.setCellValueFactory(new PropertyValueFactory<>("playerName"));
@@ -39,6 +66,12 @@ public class HighScoreController {
         table.setItems(tableData);
     }
 
+    /**
+     * Switches back to the start page.
+     *
+     * @param event the action event
+     * @throws IOException if an I/O error occurs
+     */
     public void backButtonSwitch(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/startpage.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();

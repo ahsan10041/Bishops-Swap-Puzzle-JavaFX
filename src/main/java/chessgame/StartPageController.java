@@ -38,6 +38,7 @@ public class StartPageController {
     /**
      * Switches to the game scene when the "Start Game" button is clicked.
      * Validates the player name input and initializes the game.
+     * Saves Player and Game information to the Game Object
      *
      * @param event The action event triggered by clicking the "Start Game" button.
      * @throws IOException If an I/O error occurs while loading the game scene.

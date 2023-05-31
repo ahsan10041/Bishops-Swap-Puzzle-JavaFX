@@ -142,6 +142,7 @@ public class ChessGameController {
     /**
      * Handles the mouse click event on a game board square.
      * Updates the selected position and checks if a move can be made.
+     * Checks if the game has reached its Win or Lose State
      *
      * @param event The MouseEvent representing the mouse click event.
      */
@@ -244,6 +245,7 @@ public class ChessGameController {
     }
     /**
      * Switches the scene to the start page.
+     * gets the game information to save in JSON file through function in JsonHelperClass
      *
      * @param event The ActionEvent representing the button click event.
      * @throws IOException if an I/O error occurs.
@@ -289,9 +291,10 @@ public class ChessGameController {
             thisGame.setIsSolved(true);
             alert.setTitle("Game Won");
             alert.setHeaderText(null);
-            alert.setContentText("\tCongratulations! \nYou won the game.\n" +
-                                 "Your Scores are Saved,\n" +
-                                 "You can go back to start page by clicking on Quit Game");
+            alert.setContentText("\t\tCongratulations! \nYou won the game.\n" +
+                                    "You Won by using only " + thisGame.getMovesLeft() + " Moves\n" +
+                                    "Your Scores are Saved,\n" +
+                                    "You can go back to start page by clicking on Quit Game");
 
             // Display the alert dialog
             alert.showAndWait();
