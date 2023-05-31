@@ -18,7 +18,7 @@
          <children>
             <ImageView fitHeight="80.0" fitWidth="94.0" layoutX="29.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@image.png" />
+                  <Image url="@Images/image.png" />
                </image>
             </ImageView>
             <Label layoutX="140.0" layoutY="16.0" prefHeight="85.0" prefWidth="451.0" style="-fx-alignment: Center;" text="HIGH SCORES" textFill="WHITE">

@@ -68,14 +68,15 @@ public class ChessGameModelTest {
         assertFalse(chessGameModel.isOnBoard(invalidPosition));
     }
 
-//    @Test
-//    public void testIsBishopMove() {
-//        Position validMove = new Position(0, 1);
-//        Position invalidMove = new Position(2, 1);
-//
-//        assertTrue(chessGameModel.isBishopMove(validMove, invalidMove));
-//        assertFalse(chessGameModel.isBishopMove(validMove, validMove));
-//    }
+    @Test
+    public void testIsBishopMove() {
+        Position fromValidMove = new Position(0, 1);
+        Position toValidMove = new Position(1, 2);
+        Position toInValidMove = new Position(2,1);
+
+        assertTrue(chessGameModel.isBishopMove(fromValidMove, toValidMove));
+        assertFalse(chessGameModel.isBishopMove(fromValidMove, toInValidMove));
+    }
 
     @Test
     public void testIsSafe() {
@@ -97,23 +98,12 @@ public class ChessGameModelTest {
 
 
     @Test
-    public void testIsGameLost() {
-        assertFalse(chessGameModel.isGameLost());
-    }
-
-    @Test
     public void testIsGameWon() {
         assertFalse(chessGameModel.isGameWon());
     }
 
 
-    @Test
-    public void testUpdateMovesLeft() {
-        int initialMovesLeft = chessGameModel.movesLeft();
-        int updatedMovesLeft = chessGameModel.updateMovesLeft();
 
-        assertEquals(initialMovesLeft - 1, updatedMovesLeft);
-    }
 
 
 }

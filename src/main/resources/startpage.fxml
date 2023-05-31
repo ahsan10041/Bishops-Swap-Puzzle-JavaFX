@@ -36,7 +36,7 @@
             <AnchorPane />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="32.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@image.png" />
+                  <Image url="@Images/image.png" />
                </image>
             </ImageView>
             <Label layoutX="39.0" layoutY="406.0" prefHeight="30.0" prefWidth="173.0" text="Copyrights (c). All rights reserved" textFill="WHITE">

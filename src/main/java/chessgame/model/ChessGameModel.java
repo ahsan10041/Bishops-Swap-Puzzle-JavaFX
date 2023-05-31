@@ -7,7 +7,6 @@ import javafx.beans.property.ReadOnlyObjectWrapper;
 
 import java.time.ZonedDateTime;
 
-
 /**
  * The ChessGameModel class represents the model of a chess game.
  */
@@ -23,8 +22,6 @@ public class ChessGameModel {
      */
     public static final int BOARD_COL = 4;
 
-    private StartPageController startpage = new StartPageController();
-    private Game thisGame = new Game(startpage.getCurrentPlayer());
 
     private ReadOnlyObjectWrapper<Square>[][] board = new ReadOnlyObjectWrapper[BOARD_ROW][BOARD_COL];
 
@@ -199,17 +196,6 @@ public class ChessGameModel {
     }
 
     /**
-     * Checks if the game is lost, i.e., there are no more moves left.
-     *
-     * @return true if the game is lost, false otherwise
-     */
-    public boolean isGameLost(){
-        thisGame.setIsSolved(false);
-        return (movesLeft()==0);
-    }
-
-
-    /**
      * Checks if the game is won, i.e., all the required pieces are in their correct positions.
      *
      * @return true if the game is won, false otherwise
@@ -217,44 +203,7 @@ public class ChessGameModel {
     public boolean isGameWon() {
         boolean whiteDone = getSquare(new Position(0,1)) == Square.WHITE && getSquare(new Position(0,3)) == Square.WHITE;
         boolean blackDone = getSquare(new Position(4,1)) == Square.BLACK && getSquare(new Position(4,3)) == Square.BLACK;
-
-        thisGame.setIsSolved(true);
         return whiteDone && blackDone;
-    }
-
-    /**
-     * Returns the name of the current player.
-     *
-     * @return the name of the current player
-     */
-    public String playerName(){
-        return thisGame.getPlayerName();
-    }
-
-    public Boolean isSolved() {
-        return thisGame.getIsSolved();
-    }
-
-    public ZonedDateTime createdAt() { return thisGame.getCreatedAt(); }
-
-    /**
-     * Updates and returns the number of moves left for the current player.
-     *
-     * @return the number of moves left
-     */
-    public int updateMovesLeft(){
-        thisGame.decMoves();
-        return movesLeft();
-    }
-
-    /**
-     * Returns the number of moves left for the current player.
-     *
-     * @return the number of moves left
-     */
-    public int movesLeft(){
-        return thisGame.getMovesLeft();
-
     }
 
     /**

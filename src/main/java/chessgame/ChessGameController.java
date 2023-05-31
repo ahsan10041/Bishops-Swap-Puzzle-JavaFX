@@ -28,12 +28,15 @@ import java.io.IOException;
 import java.time.ZonedDateTime;
 
 import static chessgame.ChessGameMoveSelector.Phase;
+import static chessgame.StartPageController.getCurrentPlayer;
 
 /**
  * The controller class for the Chess Game application.
  * Handles user interaction and manages the game logic.
  */
 public class ChessGameController {
+
+    Game thisGame = new Game(getCurrentPlayer());
 
     Alert alert = new Alert(AlertType.INFORMATION);
 
@@ -68,8 +71,8 @@ public class ChessGameController {
      */
     @FXML
     private void initialize() {
-        myPlayerName.setText((model.playerName()));
-        String moves = String.valueOf(model.movesLeft());
+        myPlayerName.setText((thisGame.getPlayerName()));
+        String moves = String.valueOf(thisGame.getMovesLeft());
         movesLeft.setText(moves);
         for (var i = 0; i < board.getRowCount(); i++) {
             for (var j = 0; j < board.getColumnCount(); j++) {
@@ -81,7 +84,8 @@ public class ChessGameController {
     }
 
     private void updatedMoves(){
-        String moves = String.valueOf(model.updateMovesLeft());
+        thisGame.decMoves();
+        String moves = String.valueOf(thisGame.getMovesLeft());
         movesLeft.setText(moves);
     }
 
@@ -126,9 +130,9 @@ public class ChessGameController {
                     case NONE:
                         return null; // No image for NONE state
                     case BLACK:
-                        return new Image("/blackBishop.png"); // Set the path to black image
+                        return new Image("/Images/blackBishop.png"); // Set the path to black image
                     case WHITE:
-                        return new Image("/whiteBishop.png"); // Set the path to white image
+                        return new Image("/Images/whiteBishop.png"); // Set the path to white image
                 }
                 return null; // Default case, no image
             }
@@ -246,11 +250,11 @@ public class ChessGameController {
      */
     public void SwitchToStart(ActionEvent event) throws IOException {
         JsonHelper.saveGame(new Game(
-                model.playerName(),
-                model.movesLeft(),
-                model.isSolved(),
-                50 - model.movesLeft(),
-                model.createdAt()
+                thisGame.getPlayerName(),
+                thisGame.getMovesLeft(),
+                thisGame.getIsSolved(),
+                50 - thisGame.getMovesLeft(),
+                thisGame.getCreatedAt()
         ));
 
         Parent root = FXMLLoader.load(getClass().getResource("/highscores.fxml"));
@@ -282,6 +286,7 @@ public class ChessGameController {
     public void HandleGameOver(){
 
         if(model.isGameWon()){
+            thisGame.setIsSolved(true);
             alert.setTitle("Game Won");
             alert.setHeaderText(null);
             alert.setContentText("\tCongratulations! \nYou won the game.\n" +
@@ -292,7 +297,8 @@ public class ChessGameController {
             alert.showAndWait();
             board.setDisable(true);
         }
-        else if (model.isGameLost()) {
+        else if (isGameLost()) {
+            thisGame.setIsSolved(false);
             alert.setTitle("Game LOST");
             alert.setHeaderText(null);
             alert.setContentText("!!!! GAME OVER !!!!\n You ran out of Moves.\n" +
@@ -302,5 +308,14 @@ public class ChessGameController {
             alert.showAndWait();
             board.setDisable(true);
         }
+    }
+
+    /**
+     * Checks if the game is lost, i.e., there are no more moves left.
+     *
+     * @return true if the game is lost, false otherwise
+     */
+    public boolean isGameLost(){
+        return (thisGame.getMovesLeft()==0);
     }
 }
