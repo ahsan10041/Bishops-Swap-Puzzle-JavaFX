@@ -13,7 +13,15 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * A helper class for saving and loading game data in JSON format.
+ */
 public class JsonHelper {
+    /**
+     * Saves a game object to a JSON file.
+     *
+     * @param game The game data object to be saved.
+     */
     public static void saveGame(Game game) {
         ObjectMapper mapper = new ObjectMapper()
                 .registerModule(new JavaTimeModule())
@@ -43,6 +51,12 @@ public class JsonHelper {
         }
     }
 
+    /**
+     * Loads a list of game objects from a JSON file.
+     *
+     * @return The list of game objects.
+     * @throws IOException If an error occurs while reading the file.
+     */
     public static List<Game> loadGame() throws IOException {
         ObjectMapper mapper = new ObjectMapper()
                 .registerModule(new JavaTimeModule())
